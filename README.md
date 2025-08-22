@@ -18,7 +18,7 @@ If the "sfdx-source-dependencies" folders are empty execute the following comman
 `git submodule update --init --recursive`
 ####
 If those folders contain code, then ensure you have the latest updates with ...
-'git submodule update --recursive --remote'
+`git submodule update --recursive --remote`
 
 ### Deploy Dependency Projects
 #### Order
