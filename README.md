@@ -10,8 +10,29 @@ Do you want to deploy a set of changes, or create a self-contained application? 
 
 The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
 
-## Read All About It
+## Deployment
 
+### Fetch Dependent Projects
+#### First time
+If the "sfdx-source-dependencies" folders are empty execute the following command.
+`git submodule update --init --recursive`
+####
+If those folders contain code, then ensure you have the latest updates with ...
+'git submodule update --recursive --remote'
+
+### Deploy Dependency Projects
+#### Order
+1. fflib-apex-mocks
+2. fflib-apex-common
+3. force-di
+4. at4dx
+
+#### Process
+For each dependent project in the above order
+1. `cd` into the root folder
+2. Run `sf project deploy start -d . -o {scratch-org-name}`
+
+## Read All About It
 - [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
 - [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
 - [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
